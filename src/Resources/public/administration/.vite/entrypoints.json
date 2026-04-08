@@ -1,0 +1,25 @@
+{
+  "base": "/bundles/pt1602productfaq/administration/",
+  "entryPoints": {
+    "p-t1602-product-faq": {
+      "css": [
+        "/bundles/pt1602productfaq/administration/assets/p-t1602-product-faq-hJ9__-6R.css"
+      ],
+      "dynamic": [],
+      "js": [
+        "/bundles/pt1602productfaq/administration/assets/p-t1602-product-faq-D0QOVrSP.js"
+      ],
+      "legacy": false,
+      "preload": []
+    }
+  },
+  "legacy": false,
+  "metadatas": {},
+  "version": [
+    "7.1.0",
+    7,
+    1,
+    0
+  ],
+  "viteServer": null
+}

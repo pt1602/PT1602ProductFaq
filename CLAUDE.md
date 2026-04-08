@@ -37,6 +37,10 @@ All commands are run from the **Shopware root directory** (typically `/home/pt16
 
 ## Architecture
 
+### PHP notes
+
+The Shopware environment runs **PHP < 8.3**. Do not use typed class constants (`public const string FOO = ...`) — use untyped constants (`public const FOO = ...`) instead.
+
 ### PHP Backend
 
 - **`src/PT1602ProductFaq.php`** — Plugin entry point (extends `Shopware\Core\Framework\Plugin`).
@@ -60,7 +64,3 @@ All JS lives in `src/Resources/app/administration/src/`:
 ### Data flow
 
 The FAQ tab appears in the Shopware admin product detail view. The `sw-product-detail-faq` page component fetches FAQs directly via the DAL repository, filtered by `productId`. Save/delete operations also go through the repository. The modal (`pt1602-product-faq-modal`) receives the current FAQ entity as a prop and emits `save`/`close` events.
-
-## Testing
-
-Tests use Shopware's `TestBootstrapper` (see `tests/TestBootstrap.php`), which installs the plugin in the test environment. PHPUnit config is in `phpunit.xml` — test execution order is randomized.

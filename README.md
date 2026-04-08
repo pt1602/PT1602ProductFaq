@@ -11,20 +11,9 @@ A Shopware 6 plugin that adds a **FAQ (Frequently Asked Questions)** tab to the 
 1. Copy the plugin into `custom/plugins/PT1602ProductFaq` within your Shopware installation.
 2. Install and activate the plugin:
    ```bash
-   ./bin/console plugin:install --activate PT1602ProductFaq
+   ./bin/console plugin:install -ac PT1602ProductFaq
    ```
-3. Run the database migration:
-   ```bash
-   ./bin/console database:migrate PT1602ProductFaq --all
-   ```
-4. Build the administration assets:
-   ```bash
-   ./bin/build-administration.sh
-   ```
-5. Clear the cache:
-   ```bash
-   ./bin/console cache:clear
-   ```
+   > **Note:** The `-ac` flag activates the plugin and clears the cache.
 
 ## Features
 
