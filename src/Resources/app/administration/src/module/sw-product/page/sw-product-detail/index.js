@@ -10,6 +10,6 @@ Component.override('sw-product-detail', {
             const criteria = this.$super('productCriteria');
             criteria.addAssociation('pt1602ProductFaq');
             return criteria;
-        }
-    }
-}); 
+        },
+    },
+});

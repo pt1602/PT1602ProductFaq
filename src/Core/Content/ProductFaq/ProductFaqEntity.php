@@ -11,7 +11,9 @@ class ProductFaqEntity extends Entity
     use EntityIdTrait;
 
     protected string $productId;
+
     protected string $productVersionId;
+
     protected string $faq;
 
     protected ?ProductEntity $product = null;
@@ -55,4 +57,4 @@ class ProductFaqEntity extends Entity
     {
         $this->product = $product;
     }
-} 
+}

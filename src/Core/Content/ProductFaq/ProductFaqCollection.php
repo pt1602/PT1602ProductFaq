@@ -13,4 +13,4 @@ class ProductFaqCollection extends EntityCollection
     {
         return ProductFaqEntity::class;
     }
-} 
+}
