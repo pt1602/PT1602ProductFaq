@@ -1,22 +1,26 @@
 <sw-modal
-        :title="modalTitle"
-        @modal-close="onClose">
-
+    :title="modalTitle"
+    @modal-close="onClose"
+>
     <template #body>
         <div class="pt1602-product-faq-modal__content">
-            <sw-container columns="1fr" gap="20px">
+            <sw-container
+                columns="1fr"
+                gap="20px"
+            >
                 <mt-text-field
-                        v-model="faq.question"
-                        :label="$t('pt1602-product-faq.detail.labelQuestion')"
-                        :placeholder="$t('pt1602-product-faq.detail.placeholderQuestion')"
-                        required>
+                    v-model="faq.question"
+                    :label="$t('pt1602-product-faq.detail.labelQuestion')"
+                    :placeholder="$t('pt1602-product-faq.detail.placeholderQuestion')"
+                    required
+                >
                 </mt-text-field>
-
                 <mt-textarea
-                        v-model="faq.answer"
-                        :label="$t('pt1602-product-faq.detail.labelAnswer')"
-                        :placeholder="$t('pt1602-product-faq.detail.placeholderAnswer')"
-                        required>
+                    v-model="faq.answer"
+                    :label="$t('pt1602-product-faq.detail.labelAnswer')"
+                    :placeholder="$t('pt1602-product-faq.detail.placeholderAnswer')"
+                    required
+                >
                 </mt-textarea>
             </sw-container>
         </div>
@@ -24,15 +28,17 @@
 
     <template #modal-footer>
         <sw-button
-                size="small"
-                @click="onClose">
+            size="small"
+            @click="onClose"
+        >
             {{ $t('pt1602-product-faq.detail.buttonCancel') }}
         </sw-button>
         <sw-button
-                variant="primary"
-                size="small"
-                @click="onSave">
+            variant="primary"
+            size="small"
+            @click="onSave"
+        >
             {{ $t('pt1602-product-faq.detail.buttonSave') }}
         </sw-button>
     </template>
-</sw-modal> 
+</sw-modal>

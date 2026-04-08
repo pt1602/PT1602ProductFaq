@@ -1,0 +1,21 @@
+name: Shopware CLI
+
+on:
+    pull_request:
+        branches: [main]
+
+jobs:
+    validate:
+        name: Validate Extension
+        runs-on: ubuntu-24.04
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Install Shopware CLI
+              uses: shopware/shopware-cli-action@v1
+              with:
+                  version: 0.10.4
+
+            - name: Run Validation
+              run: shopware-cli extension validate .

@@ -1,21 +1,25 @@
-<sw-card :title="$t('pt1602-product-faq.detail.cardTitle')" :isLoading="isLoading">
+<sw-card
+    :title="$t('pt1602-product-faq.detail.cardTitle')"
+    :isLoading="isLoading"
+>
     <template #toolbar>
         <sw-button
-                variant="primary"
-                size="small"
-                @click="onAddFaq">
+            variant="primary"
+            size="small"
+            @click="onAddFaq"
+        >
             {{ $t('pt1602-product-faq.detail.buttonAddFaq') }}
         </sw-button>
     </template>
 
     <template #grid>
         <sw-data-grid
-                v-if="faq.length > 0"
-                :dataSource="faq"
-                :columns="faqColumns"
-                :showSelection="false"
-                :isLoading="isLoading">
-
+            v-if="faq.length > 0"
+            :dataSource="faq"
+            :columns="faqColumns"
+            :showSelection="false"
+            :isLoading="isLoading"
+        >
             <template #column-question="{ item }">
                 <div class="pt1602-product-faq-preview">
                     {{ item.question.length > 100 ? item.question.substring(0, 100) + '...' : item.question }}
@@ -27,48 +31,50 @@
                     {{ $t('pt1602-product-faq.detail.buttonEdit') }}
                 </sw-context-menu-item>
                 <sw-context-menu-item
-                        variant="danger"
-                        @click="onDeleteFaq(item)">
+                    variant="danger"
+                    @click="onDeleteFaq(item)"
+                >
                     {{ $t('pt1602-product-faq.detail.buttonDelete') }}
                 </sw-context-menu-item>
             </template>
         </sw-data-grid>
-
         <sw-empty-state
-                v-else
-                :title="$t('pt1602-product-faq.detail.messageNoFaqs')">
+            v-else
+            :title="$t('pt1602-product-faq.detail.messageNoFaqs')"
+        >
         </sw-empty-state>
     </template>
-
     <pt1602-product-faq-modal
-            v-if="showModal"
-            :faq="currentFaq"
-            @save="onSaveFaq"
-            @close="onCloseModal">
+        v-if="showModal"
+        :faq="currentFaq"
+        @save="onSaveFaq"
+        @close="onCloseModal"
+    >
     </pt1602-product-faq-modal>
-
     <sw-modal
-            v-if="showDeleteModal"
-            :title="$t('pt1602-product-faq.detail.buttonDelete')"
-            variant="small"
-            @modal-close="onCancelDelete">
-        <p>{{ $t('pt1602-product-faq.detail.messageDeleteConfirm') }}</p>
-
+        v-if="showDeleteModal"
+        :title="$t('pt1602-product-faq.detail.buttonDelete')"
+        variant="small"
+        @modal-close="onCancelDelete"
+    >
+        <p>
+            {{ $t('pt1602-product-faq.detail.messageDeleteConfirm') }}
+        </p>
         <template #modal-footer>
             <mt-button
-                    size="small"
-                    variant="secondary"
-                    @click="onCancelDelete"
+                size="small"
+                variant="secondary"
+                @click="onCancelDelete"
             >
                 {{ $t('pt1602-product-faq.detail.buttonCancel') }}
             </mt-button>
             <mt-button
-                    variant="critical"
-                    size="small"
-                    @click="onConfirmDelete"
+                variant="critical"
+                size="small"
+                @click="onConfirmDelete"
             >
                 {{ $t('pt1602-product-faq.detail.buttonDelete') }}
             </mt-button>
         </template>
     </sw-modal>
-</sw-card> 
+</sw-card>

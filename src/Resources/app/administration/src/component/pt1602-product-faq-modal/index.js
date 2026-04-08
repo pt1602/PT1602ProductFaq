@@ -9,16 +9,16 @@ Component.register('pt1602-product-faq-modal', {
     props: {
         faq: {
             type: Object,
-            required: true
-        }
+            required: true,
+        },
     },
 
     computed: {
         modalTitle() {
-            return this.faq.isNew() 
+            return this.faq.isNew()
                 ? this.$t('pt1602-product-faq.detail.buttonAddFaq')
                 : this.$t('pt1602-product-faq.detail.buttonEdit');
-        }
+        },
     },
 
     methods: {
@@ -28,6 +28,6 @@ Component.register('pt1602-product-faq-modal', {
 
         onClose() {
             this.$emit('close');
-        }
-    }
-}); 
+        },
+    },
+});

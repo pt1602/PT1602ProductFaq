@@ -4,14 +4,32 @@
     "type": "shopware-platform-plugin",
     "version": "1.0.0",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Philipp Tuchardt",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "shopware/core": "~6.7.0"
     },
     "extra": {
         "shopware-plugin-class": "PT1602ProductFaq\\PT1602ProductFaq",
         "label": {
-            "de-DE": "Skeleton plugin",
-            "en-GB": "Skeleton plugin"
+            "de-DE": "Produkt FAQ",
+            "en-GB": "Product FAQ"
+        },
+        "description": {
+            "de-DE": "Dieses Plugin ergänzt die Produktdetailseite im Shopware-Adminbereich um einen FAQ-Reiter. Fragen und Antworten können je Produkt direkt verwaltet werden.",
+            "en-GB": "This plugin adds a FAQ tab to the product detail page in the Shopware administration. Questions and answers can be managed per product directly in the admin UI."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://github.com/pt1602/PT1602ProductFaq",
+            "en-GB": "https://github.com/pt1602/PT1602ProductFaq"
+        },
+        "supportLink": {
+            "de-DE": "https://github.com/pt1602/PT1602ProductFaq/issues",
+            "en-GB": "https://github.com/pt1602/PT1602ProductFaq/issues"
         }
     },
     "autoload": {

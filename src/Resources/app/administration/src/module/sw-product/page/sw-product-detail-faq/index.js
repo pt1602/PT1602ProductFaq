@@ -1,16 +1,14 @@
 import template from './sw-product-detail-faq.html.twig';
 
-const {Context, Component, Mixin, Filter} = Shopware;
-const {Criteria} = Shopware.Data;
+const { Context, Component, Mixin, Filter } = Shopware;
+const { Criteria } = Shopware.Data;
 
 Component.register('sw-product-detail-faq', {
     template,
 
     inject: ['repositoryFactory'],
 
-    mixins: [
-        Mixin.getByName('notification')
-    ],
+    mixins: [Mixin.getByName('notification')],
 
     data() {
         return {
@@ -19,7 +17,7 @@ Component.register('sw-product-detail-faq', {
             showModal: false,
             currentFaq: null,
             showDeleteModal: false,
-            faqToDelete: null
+            faqToDelete: null,
         };
     },
 
@@ -41,15 +39,15 @@ Component.register('sw-product-detail-faq', {
                 {
                     property: 'question',
                     label: this.$t('pt1602-product-faq.detail.columnQuestion'),
-                    rawData: true
+                    rawData: true,
                 },
                 {
                     property: 'answer',
                     label: this.$t('pt1602-product-faq.detail.columnAnswer'),
-                    rawData: true
-                }
+                    rawData: true,
+                },
             ];
-        }
+        },
     },
 
     created() {
@@ -62,7 +60,8 @@ Component.register('sw-product-detail-faq', {
             const criteria = new Criteria();
             criteria.addFilter(Criteria.equals('productId', this.productId));
 
-            this.faqRepository.search(criteria, Context.api)
+            this.faqRepository
+                .search(criteria, Context.api)
                 .then((result) => {
                     this.faq = result;
                 })
@@ -92,16 +91,21 @@ Component.register('sw-product-detail-faq', {
                 return;
             }
 
-            this.faqRepository.delete(this.faqToDelete.id, Context.api)
+            this.faqRepository
+                .delete(this.faqToDelete.id, Context.api)
                 .then(() => {
                     this.createNotificationSuccess({
-                        message: this.$t('pt1602-product-faq.detail.messageDeleteSuccess')
+                        message: this.$t(
+                            'pt1602-product-faq.detail.messageDeleteSuccess'
+                        ),
                     });
                     this.loadFaqs();
                 })
                 .catch(() => {
                     this.createNotificationError({
-                        message: this.$t('pt1602-product-faq.detail.messageError')
+                        message: this.$t(
+                            'pt1602-product-faq.detail.messageError'
+                        ),
                     });
                 })
                 .finally(() => {
@@ -116,17 +120,22 @@ Component.register('sw-product-detail-faq', {
         },
 
         onSaveFaq() {
-            this.faqRepository.save(this.currentFaq, Context.api)
+            this.faqRepository
+                .save(this.currentFaq, Context.api)
                 .then(() => {
                     this.createNotificationSuccess({
-                        message: this.$t('pt1602-product-faq.detail.messageSaveSuccess')
+                        message: this.$t(
+                            'pt1602-product-faq.detail.messageSaveSuccess'
+                        ),
                     });
                     this.showModal = false;
                     this.loadFaqs();
                 })
                 .catch(() => {
                     this.createNotificationError({
-                        message: this.$t('pt1602-product-faq.detail.messageError')
+                        message: this.$t(
+                            'pt1602-product-faq.detail.messageError'
+                        ),
                     });
                 });
         },
@@ -134,6 +143,6 @@ Component.register('sw-product-detail-faq', {
         onCloseModal() {
             this.showModal = false;
             this.currentFaq = null;
-        }
-    }
-}); 
+        },
+    },
+});
