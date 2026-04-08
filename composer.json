@@ -1,0 +1,27 @@
+{
+    "name": "p-t1602-product-faq/p-t1602-product-faq",
+    "description": "p-t1602-product-faq/p-t1602-product-faq",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "~6.7.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "PT1602ProductFaq\\PT1602ProductFaq",
+        "label": {
+            "de-DE": "Skeleton plugin",
+            "en-GB": "Skeleton plugin"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "PT1602ProductFaq\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PT1602ProductFaq\\Tests\\": "tests/"
+        }
+    }
+}
