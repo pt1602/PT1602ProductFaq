@@ -10,7 +10,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
 class ProductExtension extends EntityExtension
 {
-    public const string EXTENSION_NAME = 'pt1602ProductFaq';
+    public const EXTENSION_NAME = 'pt1602ProductFaq';
 
     public function extendFields(FieldCollection $collection): void
     {
