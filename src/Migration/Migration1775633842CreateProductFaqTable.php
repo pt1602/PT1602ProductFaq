@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `pt1602_product_faq` (
     `product_id` BINARY(16) NOT NULL,
     `product_version_id` BINARY(16) NOT NULL, 
     `question` VARCHAR(255) NOT NULL,
-    `awnser` LONGTEXT NOT NULL,
+    `answer` LONGTEXT NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NULL ON UPDATE CURRENT_TIMESTAMP(3),
     PRIMARY KEY (`id`),
