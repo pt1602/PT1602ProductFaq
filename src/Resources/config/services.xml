@@ -13,5 +13,10 @@
         <service id="PT1602ProductFaq\Core\Content\Product\ProductExtension">
             <tag name="shopware.entity.extension" />
         </service>
+
+        <!-- Subscriber -->
+        <service id="PT1602ProductFaq\Storefront\Subscriber\ProductPageSubscriber">
+            <tag name="kernel.event_subscriber" />
+        </service>
     </services>
 </container> 

@@ -1,0 +1,80 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-product-description-reviews.html.twig' %}
+
+{% block element_product_description_reviews %}
+    {% set pt1602ProductFaq = element.data.product.extensions.pt1602ProductFaq %}
+    {% set faqTabId = "faq-tab-" ~ product.id %}
+    {% set faqTabHref = "#faq-tab-" ~ product.id ~ "-pane" %}
+    {% set faqTabContent = "faq-tab-" ~ product.id ~ "-pane" %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block element_product_description_reviews_tabs_navigation_container %}
+    <ul class="nav nav-tabs product-detail-tab-navigation-list"
+        id="product-detail-tabs"
+        role="tablist">
+        {{ block('element_product_description_reviews_tabs_navigation_description') }}
+        {{ block('element_product_description_reviews_tabs_navigation_review') }}
+
+        {% if pt1602ProductFaq and pt1602ProductFaq|length > 0 %}
+            <li class="nav-item">
+                <a class="nav-link product-detail-tab-navigation-link faq-tab"
+                   id="{{ faqTabId }}"
+                   data-bs-toggle="tab"
+                   data-off-canvas-tabs="true"
+                   href="{{ faqTabHref }}"
+                   role="tab"
+                   aria-controls="{{ faqTabContent }}"
+                   aria-selected="false">
+                    <span>{{ "pt1602-product-faq.detail.tabFaq"|trans|sw_sanitize }}</span>
+                    <span class="product-detail-tab-navigation-icon">
+                    {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                </span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock %}
+
+{% block element_product_description_reviews_tabs_content_container %}
+    <div class="tab-content">
+        {{ block('element_product_description_reviews_tabs_content_description') }}
+        {{ block('element_product_description_reviews_tabs_content_review') }}
+
+        {% if pt1602ProductFaq and pt1602ProductFaq|length > 0 %}
+            <div class="tab-pane fade"
+                 id="{{ faqTabContent }}"
+                 role="tabpanel"
+                 aria-labelledby="{{ faqTabId }}">
+
+                <div class="product-detail-faq mb-4">
+                    <div class="accordion" id="faqAccordion">
+                        {% for faq in pt1602ProductFaq %}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading{{ loop.index }}">
+                                    <button class="accordion-button{% if not loop.first %} collapsed{% endif %}"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#collapse{{ loop.index }}"
+                                            aria-expanded="{% if loop.first %}true{% else %}false{% endif %}"
+                                            aria-controls="collapse{{ loop.index }}">
+                                        {{ faq.question }}
+                                    </button>
+                                </h2>
+
+                                <div id="collapse{{ loop.index }}"
+                                     class="accordion-collapse collapse {% if loop.first %}show{% endif %}"
+                                     aria-labelledby="heading{{ loop.index }}"
+                                     data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        {{ faq.answer|nl2br }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -14,7 +14,8 @@ class ProductFaqEntity extends Entity
 
     protected string $productVersionId;
 
-    protected string $faq;
+    protected string $question;
+    protected string $answer;
 
     protected ?ProductEntity $product = null;
 
@@ -38,14 +39,24 @@ class ProductFaqEntity extends Entity
         $this->productVersionId = $productVersionId;
     }
 
-    public function getFaq(): string
+    public function getQuestion(): string
     {
-        return $this->faq;
+        return $this->question;
     }
 
-    public function setFaq(string $faq): void
+    public function setQuestion(string $question): void
     {
-        $this->faq = $faq;
+        $this->question = $question;
+    }
+
+    public function getAnswer(): string
+    {
+        return $this->answer;
+    }
+
+    public function setAnswer(string $answer): void
+    {
+        $this->answer = $answer;
     }
 
     public function getProduct(): ?ProductEntity
