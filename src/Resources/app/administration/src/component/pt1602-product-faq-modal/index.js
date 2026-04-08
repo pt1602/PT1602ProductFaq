@@ -7,7 +7,7 @@ Component.register('pt1602-product-faq-modal', {
     template,
 
     props: {
-        note: {
+        faq: {
             type: Object,
             required: true
         }
@@ -15,8 +15,8 @@ Component.register('pt1602-product-faq-modal', {
 
     computed: {
         modalTitle() {
-            return this.note.isNew() 
-                ? this.$t('pt1602-product-faq.detail.buttonAddNote')
+            return this.faq.isNew() 
+                ? this.$t('pt1602-product-faq.detail.buttonAddFaq')
                 : this.$t('pt1602-product-faq.detail.buttonEdit');
         }
     },

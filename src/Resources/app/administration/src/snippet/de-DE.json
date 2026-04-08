@@ -1,28 +1,23 @@
 {
     "pt1602-product-faq": {
-        "general": {
-            "mainMenuItemGeneral": "Produkt Notizen",
-            "descriptionTextModule": "Produkt Notizen verwalten"
-        },
         "detail": {
-            "tabNotes": "Notizen",
-            "cardTitle": "Produkt Notizen",
-            "columnNote": "Notiz",
-            "columnSolved": "Gelöst",
-            "columnCreatedAt": "Erstellt",
-            "columnUpdatedAt": "Aktualisiert",
-            "buttonAddNote": "Notiz hinzufügen",
+            "tabFaq": "FAQ",
+            "cardTitle": "Fragen & Antworten",
+            "columnQuestion": "Frage",
+            "columnAnswer": "Antwort",
+            "buttonAddFaq": "Hinzufügen",
             "buttonEdit": "Bearbeiten",
             "buttonDelete": "Löschen",
             "buttonSave": "Speichern",
             "buttonCancel": "Abbrechen",
-            "labelNote": "Notiz",
-            "labelSolved": "Gelöst",
-            "placeholderNote": "Notiz eingeben...",
-            "messageDeleteConfirm": "Sind Sie sicher, dass Sie diese Notiz löschen möchten?",
-            "messageNoNotes": "Keine Notizen verfügbar",
-            "messageSaveSuccess": "Notiz erfolgreich gespeichert",
-            "messageDeleteSuccess": "Notiz erfolgreich gelöscht",
+            "labelQuestion": "Frage",
+            "placeholderQuestion": "Frage eingeben...",
+            "labelAnswer": "Antwort",
+            "placeholderAnswer": "Antwort eingeben...",
+            "messageDeleteConfirm": "Sind Sie sicher, dass Sie dieses FAQ löschen möchten?",
+            "messageNoFaqs": "Keine FAQs verfügbar",
+            "messageSaveSuccess": "FAQ erfolgreich gespeichert",
+            "messageDeleteSuccess": "FAQ erfolgreich gelöscht",
             "messageError": "Ein Fehler ist aufgetreten"
         }
     }
