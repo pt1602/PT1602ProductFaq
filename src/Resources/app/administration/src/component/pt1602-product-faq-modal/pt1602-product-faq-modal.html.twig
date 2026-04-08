@@ -1,35 +1,37 @@
 <sw-modal
-    :title="modalTitle"
-    @modal-close="onClose">
+        :title="modalTitle"
+        @modal-close="onClose">
 
     <template #body>
         <div class="pt1602-product-faq-modal__content">
             <sw-container columns="1fr" gap="20px">
-                <sw-textarea-field
-                    v-model="note.note"
-                    :label="$t('pt1602-product-faq.detail.labelNote')"
-                    :placeholder="$t('pt1602-product-faq.detail.placeholderNote')"
-                    required>
-                </sw-textarea-field>
+                <mt-text-field
+                        v-model="faq.question"
+                        :label="$t('pt1602-product-faq.detail.labelQuestion')"
+                        :placeholder="$t('pt1602-product-faq.detail.placeholderQuestion')"
+                        required>
+                </mt-text-field>
 
-                <sw-checkbox-field
-                    v-model="note.solved"
-                    :label="$t('pt1602-product-faq.detail.labelSolved')">
-                </sw-checkbox-field>
+                <mt-textarea
+                        v-model="faq.answer"
+                        :label="$t('pt1602-product-faq.detail.labelAnswer')"
+                        :placeholder="$t('pt1602-product-faq.detail.placeholderAnswer')"
+                        required>
+                </mt-textarea>
             </sw-container>
         </div>
     </template>
 
     <template #modal-footer>
-        <sw-button 
-            size="small"
-            @click="onClose">
+        <sw-button
+                size="small"
+                @click="onClose">
             {{ $t('pt1602-product-faq.detail.buttonCancel') }}
         </sw-button>
-        <sw-button 
-            variant="primary" 
-            size="small"
-            @click="onSave">
+        <sw-button
+                variant="primary"
+                size="small"
+                @click="onSave">
             {{ $t('pt1602-product-faq.detail.buttonSave') }}
         </sw-button>
     </template>

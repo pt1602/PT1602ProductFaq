@@ -1,4 +1,5 @@
 .idea
+.tmp
 /composer.lock
 /src/Resources/app/administration/node_modules/
 /src/Resources/app/administration/src/.vite

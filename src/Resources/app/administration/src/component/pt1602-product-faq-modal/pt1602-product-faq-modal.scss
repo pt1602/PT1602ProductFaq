@@ -1,15 +1,15 @@
 .pt1602-product-faq-modal__content {
-  padding: 12px 20px;
+    padding: 0.75rem 1.25rem;
 
-  .mt-textarea {
-    margin-bottom: 0;
+    .mt-textarea {
+        margin-bottom: 0;
 
-    .mt-field-label {
-      margin-left: 2px;
+        .mt-field-label {
+            margin-left: 0.125rem;
+        }
+
+        .mt-textarea__textarea {
+            padding: 0.5625rem;
+        }
     }
-
-    .mt-textarea__textarea {
-      padding: 9px;
-    }
-  }
 }

@@ -1,7 +1,7 @@
 import template from './sw-product-detail-faq.html.twig';
 
-const { Context, Component, Mixin, Filter } = Shopware;
-const { Criteria } = Shopware.Data;
+const {Context, Component, Mixin, Filter} = Shopware;
+const {Criteria} = Shopware.Data;
 
 Component.register('sw-product-detail-faq', {
     template,
@@ -14,12 +14,12 @@ Component.register('sw-product-detail-faq', {
 
     data() {
         return {
-            notes: [],
+            faq: [],
             isLoading: false,
             showModal: false,
-            currentNote: null,
+            currentFaq: null,
             showDeleteModal: false,
-            noteToDelete: null
+            faqToDelete: null
         };
     },
 
@@ -32,25 +32,20 @@ Component.register('sw-product-detail-faq', {
             return Filter.getByName('date');
         },
 
-        noteRepository() {
+        faqRepository() {
             return this.repositoryFactory.create('pt1602_product_faq');
         },
 
-        noteColumns() {
+        faqColumns() {
             return [
                 {
-                    property: 'note',
-                    label: this.$t('pt1602-product-faq.detail.columnNote'),
+                    property: 'question',
+                    label: this.$t('pt1602-product-faq.detail.columnQuestion'),
                     rawData: true
                 },
                 {
-                    property: 'solved',
-                    label: this.$t('pt1602-product-faq.detail.columnSolved'),
-                    rawData: true
-                },
-                {
-                    property: 'createdAt',
-                    label: this.$t('pt1602-product-faq.detail.columnCreatedAt'),
+                    property: 'answer',
+                    label: this.$t('pt1602-product-faq.detail.columnAnswer'),
                     rawData: true
                 }
             ];
@@ -58,53 +53,51 @@ Component.register('sw-product-detail-faq', {
     },
 
     created() {
-        this.loadNotes();
+        this.loadFaqs();
     },
 
     methods: {
-        loadNotes() {
+        loadFaqs() {
             this.isLoading = true;
             const criteria = new Criteria();
             criteria.addFilter(Criteria.equals('productId', this.productId));
-            criteria.addSorting(Criteria.sort('createdAt', 'DESC'));
 
-            this.noteRepository.search(criteria, Context.api)
+            this.faqRepository.search(criteria, Context.api)
                 .then((result) => {
-                    this.notes = result;
+                    this.faq = result;
                 })
                 .finally(() => {
                     this.isLoading = false;
                 });
         },
 
-        onAddNote() {
-            this.currentNote = this.noteRepository.create(Context.api);
-            this.currentNote.productId = this.productId;
-            this.currentNote.solved = false;
+        onAddFaq() {
+            this.currentFaq = this.faqRepository.create(Context.api);
+            this.currentFaq.productId = this.productId;
             this.showModal = true;
         },
 
-        onEditNote(note) {
-            this.currentNote = note;
+        onEditFaq(faq) {
+            this.currentFaq = faq;
             this.showModal = true;
         },
 
-        onDeleteNote(note) {
-            this.noteToDelete = note;
+        onDeleteFaq(faq) {
+            this.faqToDelete = faq;
             this.showDeleteModal = true;
         },
 
         onConfirmDelete() {
-            if (!this.noteToDelete) {
+            if (!this.faqToDelete) {
                 return;
             }
 
-            this.noteRepository.delete(this.noteToDelete.id, Context.api)
+            this.faqRepository.delete(this.faqToDelete.id, Context.api)
                 .then(() => {
                     this.createNotificationSuccess({
                         message: this.$t('pt1602-product-faq.detail.messageDeleteSuccess')
                     });
-                    this.loadNotes();
+                    this.loadFaqs();
                 })
                 .catch(() => {
                     this.createNotificationError({
@@ -113,23 +106,23 @@ Component.register('sw-product-detail-faq', {
                 })
                 .finally(() => {
                     this.showDeleteModal = false;
-                    this.noteToDelete = null;
+                    this.faqToDelete = null;
                 });
         },
 
         onCancelDelete() {
             this.showDeleteModal = false;
-            this.noteToDelete = null;
+            this.faqToDelete = null;
         },
 
-        onSaveNote() {
-            this.noteRepository.save(this.currentNote, Context.api)
+        onSaveFaq() {
+            this.faqRepository.save(this.currentFaq, Context.api)
                 .then(() => {
                     this.createNotificationSuccess({
                         message: this.$t('pt1602-product-faq.detail.messageSaveSuccess')
                     });
                     this.showModal = false;
-                    this.loadNotes();
+                    this.loadFaqs();
                 })
                 .catch(() => {
                     this.createNotificationError({
@@ -140,7 +133,7 @@ Component.register('sw-product-detail-faq', {
 
         onCloseModal() {
             this.showModal = false;
-            this.currentNote = null;
+            this.currentFaq = null;
         }
     }
 }); 
